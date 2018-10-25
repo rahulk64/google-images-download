@@ -570,8 +570,12 @@ class googleimagesdownload:
                 response.close()
 
                 # keep everything after the last '/'
-                image_name = str(image_url[(image_url.rfind('/')) + 1:])
-                image_name = image_name.lower()
+
+                #RAHULK64 CHANGES RIGHT HERE
+                image_name = ""
+                # image_name = str(image_url[(image_url.rfind('/')) + 1:])
+                # image_name = image_name.lower()
+
                 # if no extension then add it
                 # remove everything after the image name
                 if image_format == "":
@@ -590,7 +594,7 @@ class googleimagesdownload:
                 if no_numbering:
                     path = main_directory + "/" + dir_name + "/" + prefix + image_name
                 else:
-                    path = main_directory + "/" + dir_name + "/" + prefix + str(count) + ". " + image_name
+                    path = main_directory + "/" + dir_name + "/" + prefix + str(count) + image_name
 
                 try:
                     output_file = open(path, 'wb')
