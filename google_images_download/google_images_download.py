@@ -283,8 +283,7 @@ class googleimagesdownload:
         image_name = str(url[(url.rfind('/')) + 1:])
         if '?' in image_name:
             image_name = image_name[:image_name.find('?')]
-            #ANOTHER RAHULK64 CHANGE
-        if ".jpg" in image_name or ".png" in image_name:
+        if ".jpg" in image_name or ".gif" in image_name or ".png" in image_name or ".bmp" in image_name or ".svg" in image_name or ".webp" in image_name or ".ico" in image_name:
             file_name = main_directory + "/" + image_name
         else:
             file_name = main_directory + "/" + image_name + ".jpg"
@@ -576,7 +575,7 @@ class googleimagesdownload:
                 # ASSUME ONLY PNG AND JPG
                 image_name = ""
                 if image_format == "":
-                    image_name = image_name + "." + "jpg"
+                    image_name = ".jpg"
                 elif image_format == "jpeg":
                     image_name = ".jpeg"
                 elif image_format == "jpg":
