@@ -572,27 +572,21 @@ class googleimagesdownload:
                 # keep everything after the last '/'
 
                 #RAHULK64 CHANGES RIGHT HERE
-                # ASSUME ONLY PNG AND JPG
-                image_name = ""
-                if image_format == "":
-                    image_name = ".jpg"
-                elif image_format == "jpeg":
-                    image_name = ".jpeg"
-                elif image_format == "jpg":
-                    image_name = ".jpg"
-                else:
-                    image_name = ".png"
+                # keep everything after the last '/'
+                image_name = str(image_url[(image_url.rfind('/')) + 1:])
                 image_name = image_name.lower()
 
                 # if no extension then add it
                 # remove everything after the image name
+                if image_format == "":
+                    image_name = "." + "jpg"
+                elif image_format == "jpeg":
+                    image_name = ".jpeg"
+                else:
+                    image_name = ".jpg"
 
-                # if image_format == "":
-                    # image_name = image_name + "." + "jpg"
-                # elif image_format == "jpeg":
-                #     image_name = image_name[:image_name.find(image_format) + 4]
-                # else:
-                    # image_name = image_name[:image_name.find(image_format) + 3]
+                # prefix name in image
+                prefix = ''
 
                 # prefix name in image
                 prefix = ''
