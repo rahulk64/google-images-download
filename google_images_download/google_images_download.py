@@ -283,7 +283,8 @@ class googleimagesdownload:
         image_name = str(url[(url.rfind('/')) + 1:])
         if '?' in image_name:
             image_name = image_name[:image_name.find('?')]
-        if ".jpg" in image_name or ".gif" in image_name or ".png" in image_name or ".bmp" in image_name or ".svg" in image_name or ".webp" in image_name or ".ico" in image_name:
+            #ANOTHER RAHULK64 CHANGE
+        if ".jpg" in image_name or ".png" in image_name:
             file_name = main_directory + "/" + image_name
         else:
             file_name = main_directory + "/" + image_name + ".jpg"
@@ -572,29 +573,32 @@ class googleimagesdownload:
                 # keep everything after the last '/'
 
                 #RAHULK64 CHANGES RIGHT HERE
+                # ASSUME ONLY PNG AND JPG
                 image_name = ""
-                # image_name = str(image_url[(image_url.rfind('/')) + 1:])
-                # image_name = image_name.lower()
-
-                # if no extension then add it
-                # remove everything after the image name
                 if image_format == "":
                     image_name = image_name + "." + "jpg"
                 elif image_format == "jpeg":
-                    image_name = image_name[:image_name.find(image_format) + 4]
+                    image_name = ".jpeg"
+                elif image_format == "jpg":
+                    image_name = ".jpg"
                 else:
-                    image_name = image_name[:image_name.find(image_format) + 3]
+                    image_name = ".png"
+                image_name = image_name.lower()
+
+                # if no extension then add it
+                # remove everything after the image name
+
+                # if image_format == "":
+                    # image_name = image_name + "." + "jpg"
+                # elif image_format == "jpeg":
+                #     image_name = image_name[:image_name.find(image_format) + 4]
+                # else:
+                    # image_name = image_name[:image_name.find(image_format) + 3]
 
                 # prefix name in image
-                if prefix:
-                    prefix = prefix + " "
-                else:
-                    prefix = ''
+                prefix = ''
 
-                if no_numbering:
-                    path = main_directory + "/" + dir_name + "/" + prefix + image_name
-                else:
-                    path = main_directory + "/" + dir_name + "/" + prefix + str(count) + image_name
+                path = main_directory + "/" + dir_name + "/" + prefix + str(count) + image_name
 
                 try:
                     output_file = open(path, 'wb')
